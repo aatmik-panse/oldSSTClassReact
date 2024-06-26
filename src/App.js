@@ -3,6 +3,9 @@ import { a, b } from "./components/Products/Products";
 import Products from "./components/Products/Products";
 import { useState } from "react";
 import CartContext from "./context/CartContext";
+import { Provider } from "react-redux";
+import { store } from "./state/store";
+import Cart from "./components/Cart/Cart";
 function App() {
   // state variable
   // inc
@@ -34,15 +37,16 @@ function App() {
 
   console.log(a, b);
   return (
-    <CartContext.Provider value={{ cart, increaseQuantity, decreaseQuantity }}>
+    <Provider store={store}>
       <div className="App">
+        <Cart />
         <Products
           cart={cart}
           increaseQuantity={increaseQuantity}
           decreaseQuantity={decreaseQuantity}
         />
       </div>
-    </CartContext.Provider>
+    </Provider>
   );
 }
 
