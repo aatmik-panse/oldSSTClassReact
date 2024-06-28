@@ -41,7 +41,7 @@ function Products({ cart, increaseQuantity, decreaseQuantity }) {
 
   console.log(useWindowSize());
   useEffect(() => {
-    fetch("https://602fc537a1e9d20017af105e.mockapi.io/api/v1/products")
+    fetch("https://fakestoreapi.com/products")
       .then((response) => {
         return response.json();
       })

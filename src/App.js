@@ -6,6 +6,7 @@ import CartContext from "./context/CartContext";
 import { Provider } from "react-redux";
 import { store } from "./state/store";
 import Cart from "./components/Cart/Cart";
+import Categories from "./components/Category/Categories";
 function App() {
   // state variable
   // inc
@@ -40,6 +41,7 @@ function App() {
     <Provider store={store}>
       <div className="App">
         <Cart />
+        <Categories />
         <Products
           cart={cart}
           increaseQuantity={increaseQuantity}

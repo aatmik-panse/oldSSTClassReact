@@ -3,7 +3,7 @@ import { bindActionCreators } from "redux";
 import { action } from "../../state";
 
 function AddToCart({ product }) {
-  const cart = useSelector((state) => state.cart);
+  let cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const { add_to_cart, remove_from_cart } = bindActionCreators(
     action,
@@ -11,21 +11,21 @@ function AddToCart({ product }) {
   );
 
   const quantity = cart[product.id] ? cart[product.id].quantity : 0;
-  if (quantity === 0) {
-    return (
-      <div>
-        <button onClick={() => add_to_cart(product)}>AddToCart</button>
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <button onClick={() => add_to_cart(product)}>-</button>
-        <span>{quantity}</span>
-        <button onClick={() => remove_from_cart(product)}>+</button>
-      </div>
-    );
-  }
+
+  // Render button to add to cart if quantity is 0, otherwise show + and - buttons for adjustment
+  return (
+    <div>
+      {quantity === 0 ? (
+        <button onClick={() => add_to_cart(product)}>Add to Cart</button>
+      ) : (
+        <>
+          <button onClick={() => remove_from_cart(product.id)}>-</button>
+          <span>{quantity}</span>
+          <button onClick={() => add_to_cart(product)}>+</button>
+        </>
+      )}
+    </div>
+  );
 }
 
 export default AddToCart;

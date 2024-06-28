@@ -14,3 +14,27 @@ export const remove_from_cart = (product) => {
     });
   };
 };
+export const add_category = (category) => {
+  return (dispatch) => {
+    dispatch({
+      type: "ADD_CATEGORY",
+      payload: category,
+    });
+  };
+};
+export const remove_category = (category) => {
+  return (dispatch) => {
+    dispatch({
+      type: "REMOVE_CATEGORY",
+      payload: category,
+    });
+  };
+};
+export const load_categories = (categories) => {
+  return (dispatch) => {
+    dispatch({
+      type: "LOAD_CATEGORIES",
+      payload: categories,
+    });
+  };
+};
